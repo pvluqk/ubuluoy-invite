@@ -1,0 +1,7 @@
+rsvp.db
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env.local
+.env

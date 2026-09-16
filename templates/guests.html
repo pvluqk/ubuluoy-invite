@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="sah">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ыалдьыттар</title>
+  <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,600;0,7..72,700;1,7..72,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body class="admin-body">
+  <header class="admin-header">
+    <div class="wrap">
+      <p class="label">Админ</p>
+      <h1 class="card__title">Ыалдьыттар тиһиктэрэ</h1>
+      <p><a href="/">← Ыҥырыы сирэйигэр төннүү</a></p>
+    </div>
+  </header>
+  <main class="wrap admin-main">
+    <div class="stats">
+      <div class="stat"><span class="stat__num">{{ total }}</span><span>Барыта</span></div>
+      <div class="stat"><span class="stat__num">{{ coming }}</span><span>Кэлиэ</span></div>
+      <div class="stat"><span class="stat__num">{{ not_coming }}</span><span>Кэлбэт</span></div>
+    </div>
+    {% if guests %}
+    <div class="table-wrap">
+      <table class="guest-table">
+        <thead><tr><th>#</th><th>Аата</th><th>Эппиэт</th><th>Кэмэ</th></tr></thead>
+        <tbody>
+          {% for g in guests %}
+          <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ g.name }}</td>
+            <td>{% if g.coming %}Кэлиэбин{% else %}Кэлбэппин{% endif %}</td>
+            <td>{{ g.created_at[:16].replace('T', ' ') }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% else %}
+    <p class="muted center">Ону-маны суруйбут киһи өссө суох.</p>
+    {% endif %}
+  </main>
+</body>
+</html>
